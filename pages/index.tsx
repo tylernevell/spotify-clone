@@ -1,10 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { Sidebar } from '../components/sidebar/sidebar';
 
 const Home: NextPage = () => {
   return (
-    <div className="">
+    <div className="bg-black h-screen overflow-hidden">
       <Head>
         <title>Spotify Clone</title>
         <meta
@@ -13,9 +14,8 @@ const Home: NextPage = () => {
         />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
-      <h1>Spotify Clone Build</h1>
       <main>
-        {/* SideBar */}
+        <Sidebar />
         {/* Center */}
       </main>
 
