@@ -8,7 +8,7 @@ interface LoginProps {
 
 const Login = (props: LoginProps) => {
   const { providers } = props;
-  console.log('hello');
+
   return (
     <section className="flex flex-col items-center bg-black min-h-screen w-full justify-center">
       {Object.values(providers).map((provider) => (
