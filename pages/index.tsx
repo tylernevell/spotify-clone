@@ -5,7 +5,7 @@ import { Sidebar } from '../components/sidebar/sidebar';
 
 const Home: NextPage = () => {
   return (
-    <div className="">
+    <div className="bg-black h-screen overflow-hidden">
       <Head>
         <title>Spotify Clone</title>
         <meta

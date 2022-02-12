@@ -10,7 +10,7 @@ import { SidebarButton } from './sidebar-button';
 
 const SidebarNavigation = () => {
   return (
-    <section className="space-y-4">
+    <section className="space-y-4 mb-4">
       <SidebarButton>
         <HomeIcon className="h-5 w-5" />
         <p>Home</p>
