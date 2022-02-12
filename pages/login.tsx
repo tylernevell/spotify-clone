@@ -1,15 +1,37 @@
 import { getProviders, signIn } from 'next-auth/react';
+import { LoginButton } from '../components/login-button/login-button';
+import { v4 as uuidv4 } from 'uuid';
 
-// interface LoginProps {
-//   providers: string;
-// }
+interface LoginProps {
+  providers: any[];
+}
 
-const Login = () => {
-  return <></>;
+const Login = (props: LoginProps) => {
+  const { providers } = props;
+  console.log('hello');
+  return (
+    <section className="flex flex-col items-center bg-black min-h-screen w-full justify-center">
+      {Object.values(providers).map((provider) => (
+        <LoginButton
+          key={uuidv4()}
+          logo="spotify"
+          onClick={() => signIn(provider.id, { callbackUrl: '/' })}
+        >
+          Login with {provider.name}
+        </LoginButton>
+      ))}
+    </section>
+  );
 };
 
 export default Login;
 
 export async function getServerSideProps() {
   const providers = await getProviders();
+
+  return {
+    props: {
+      providers,
+    },
+  };
 }
