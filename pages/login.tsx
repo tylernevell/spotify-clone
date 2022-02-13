@@ -11,6 +11,10 @@ const Login = (props: LoginProps) => {
 
   return (
     <section className="flex flex-col items-center bg-black min-h-screen w-full justify-center">
+      <h3 className="text-gray-500 mb-5">
+        Attention: Please open Spotify and activate your device by playing and
+        pausing a song before using.
+      </h3>
       {Object.values(providers).map((provider) => (
         <LoginButton
           key={uuidv4()}
