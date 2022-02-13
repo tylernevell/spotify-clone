@@ -2,6 +2,8 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { UserBadge } from './user-badge';
 import { shuffle } from 'lodash';
+import { useRecoilValue } from 'recoil';
+import { playlistIdState } from '../../atoms/playlistAtom';
 
 const COLORS = [
   'from-emerald-500',
@@ -16,10 +18,11 @@ const CenterConsole = () => {
   const { data: session } = useSession();
 
   const [color, setColor] = useState('');
+  const playlistId = useRecoilValue(playlistIdState);
 
   useEffect(() => {
     setColor(shuffle(COLORS).pop()!);
-  }, []);
+  }, [playlistId]);
 
   return (
     <section className="flex-grow text-white">
