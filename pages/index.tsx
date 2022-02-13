@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { CenterConsole } from '../components/center-console/center-console';
 import { Sidebar } from '../components/sidebar/sidebar';
 
 const Home: NextPage = () => {
@@ -14,9 +15,9 @@ const Home: NextPage = () => {
         />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
-      <main>
+      <main className="flex">
         <Sidebar />
-        {/* Center */}
+        <CenterConsole />
       </main>
 
       <div>{/* Player  */}</div>
