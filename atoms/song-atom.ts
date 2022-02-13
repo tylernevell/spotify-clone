@@ -1,12 +1,12 @@
 import { atom } from 'recoil';
 
-const currentTrackIdState = atom<string | null>({
+const currentTrackIdState = atom<string | undefined>({
   key: 'currentTrackIdState',
-  default: null,
+  default: undefined,
 });
 
 const isPlayingState = atom<boolean>({
-  key: 'currentTrackIdState',
+  key: 'isPlayingState',
   default: false,
 });
 

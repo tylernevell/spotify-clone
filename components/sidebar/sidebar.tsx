@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { playlistIdState } from '../../atoms/playlist-atom';
-import { useSpotify } from '../../hooks/useSpotify';
+import { useSpotify } from '../../hooks/use-spotify';
 import { SidebarNavigation } from './sidebar-navigation';
 
 const Sidebar = () => {
@@ -22,7 +22,7 @@ const Sidebar = () => {
   }, [session, spotifyApi]);
 
   return (
-    <aside className="text-gray-500 p-5 text-xs lg:text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex md:flex-wrap">
+    <aside className="text-gray-500 p-5 text-xs lg:text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex md:flex-wrap pb-36">
       <SidebarNavigation />
       <section className="space-y-4">
         {playlists.map((playlist) => (

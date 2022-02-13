@@ -5,7 +5,7 @@ import { UserBadge } from './user-badge';
 import { shuffle } from 'lodash';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { playlistIdState, playlistState } from '../../atoms/playlist-atom';
-import { useSpotify } from '../../hooks/useSpotify';
+import { useSpotify } from '../../hooks/use-spotify';
 import { PhotographIcon } from '@heroicons/react/outline';
 import { SongsList } from '../songs-list.tsx/songs-list';
 

@@ -2,7 +2,7 @@
 import format from 'date-fns/format';
 import { useRecoilState } from 'recoil';
 import { currentTrackIdState, isPlayingState } from '../../atoms/song-atom';
-import { useSpotify } from '../../hooks/useSpotify';
+import { useSpotify } from '../../hooks/use-spotify';
 
 interface SongProps {
   song: SpotifyApi.PlaylistTrackObject;
