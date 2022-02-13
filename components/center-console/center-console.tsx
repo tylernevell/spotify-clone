@@ -1,9 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { UserBadge } from './user-badge';
 import { shuffle } from 'lodash';
-import { useRecoilValue } from 'recoil';
-import { playlistIdState } from '../../atoms/playlistAtom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { playlistIdState, playlistState } from '../../atoms/playlistAtom';
+import { useSpotify } from '../../hooks/useSpotify';
+import Image from 'next/image';
+import { PhotographIcon } from '@heroicons/react/outline';
 
 const COLORS = [
   'from-emerald-500',
@@ -17,12 +21,31 @@ const COLORS = [
 const CenterConsole = () => {
   const { data: session } = useSession();
 
+  const spotifyApi = useSpotify();
+
   const [color, setColor] = useState('');
+
   const playlistId = useRecoilValue(playlistIdState);
+  const [playlist, setPlaylist] = useRecoilState(playlistState);
 
   useEffect(() => {
     setColor(shuffle(COLORS).pop()!);
   }, [playlistId]);
+
+  useEffect(() => {
+    if (playlistId) {
+      spotifyApi
+        .getPlaylist(playlistId)
+        .then((data) => {
+          setPlaylist(data.body);
+        })
+        .catch((err) => {
+          console.log({ err });
+        });
+    }
+  }, [playlistId, setPlaylist, spotifyApi]);
+
+  console.log(playlist);
 
   return (
     <section className="flex-grow text-white">
@@ -33,7 +56,24 @@ const CenterConsole = () => {
       <section
         className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white p-8`}
       >
-        <h1>hello</h1>
+        {playlist?.images?.[0]?.url ? (
+          <img
+            src={playlist?.images?.[0]?.url}
+            alt=""
+            className="h-44 w-44 shadow-2xl"
+          />
+        ) : (
+          <div className="flex flex-col justify-center items-center w-44 h-44 border-2">
+            <PhotographIcon className="w-32 h-32" />
+            <p>No Cover</p>
+          </div>
+        )}
+        <div>
+          <p className="text-sm">PLAYLIST</p>
+          <h1 className="text-2xl md:text-3xl xl:text-5xl font-bold">
+            {playlist?.name}
+          </h1>
+        </div>
       </section>
     </section>
   );
