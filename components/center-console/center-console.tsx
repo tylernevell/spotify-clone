@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import { UserBadge } from './user-badge';
 import { shuffle } from 'lodash';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { playlistIdState, playlistState } from '../../atoms/playlistAtom';
+import { playlistIdState, playlistState } from '../../atoms/playlist-atom';
 import { useSpotify } from '../../hooks/useSpotify';
-import Image from 'next/image';
 import { PhotographIcon } from '@heroicons/react/outline';
+import { SongsList } from '../songs-list.tsx/songs-list';
 
 const COLORS = [
   'from-emerald-500',
@@ -45,10 +45,8 @@ const CenterConsole = () => {
     }
   }, [playlistId, setPlaylist, spotifyApi]);
 
-  console.log(playlist);
-
   return (
-    <section className="flex-grow text-white">
+    <section className="flex-grow h-screen overflow-y-scroll scrollbar-hide text-white">
       <UserBadge
         src={session?.user?.image}
         username={session?.user?.username}
@@ -75,6 +73,7 @@ const CenterConsole = () => {
           </h1>
         </div>
       </section>
+      <SongsList />
     </section>
   );
 };
