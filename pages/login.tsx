@@ -26,7 +26,7 @@ const Login = (props: LoginProps) => {
 
 export default Login;
 
-export async function getServerSideProps() {
+export const getServerSideProps = async () => {
   const providers = await getProviders();
 
   return {
@@ -34,4 +34,4 @@ export async function getServerSideProps() {
       providers,
     },
   };
-}
+};

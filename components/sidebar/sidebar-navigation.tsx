@@ -7,12 +7,10 @@ import {
   RssIcon,
   LogoutIcon,
 } from '@heroicons/react/outline';
-import { signOut, useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 import { SidebarButton } from './sidebar-button';
 
 const SidebarNavigation = () => {
-  const { data: session, status } = useSession();
-
   return (
     <section className="space-y-4 mb-4">
       <SidebarButton onClick={() => signOut()}>
