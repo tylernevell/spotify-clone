@@ -7,7 +7,7 @@ import { useSongInfo } from '../../hooks/use-song-info';
 import { useSpotify } from '../../hooks/use-spotify';
 import { SongInfo } from './song-info';
 import { VolumeOffIcon, VolumeUpIcon } from '@heroicons/react/outline';
-import { SongControls } from '../center-console/song-controls';
+import { SongControls } from './song-controls';
 import { debounce } from 'lodash';
 
 const Player = () => {

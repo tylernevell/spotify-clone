@@ -5,7 +5,7 @@ import { currentTrackIdState, isPlayingState } from '../../atoms/song-atom';
 import { useSpotify } from '../../hooks/use-spotify';
 
 interface SongProps {
-  song: SpotifyApi.PlaylistTrackObject;
+  song: SpotifyApi.PlaylistTrackObject | SpotifyApi.SavedTrackObject;
   order: number;
 }
 
