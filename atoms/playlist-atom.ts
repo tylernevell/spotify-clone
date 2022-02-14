@@ -10,4 +10,9 @@ const playlistState = atom<SpotifyApi.SinglePlaylistResponse | null>({
   default: null,
 });
 
-export { playlistIdState, playlistState };
+const playlistSizeSate = atom<number | null>({
+  key: 'playlistSizeState',
+  default: null,
+});
+
+export { playlistIdState, playlistState, playlistSizeSate };
